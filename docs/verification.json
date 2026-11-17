@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-11-17T21:51:49.288138+00:00",
+  "verifier_sha256": "aafcc7158efa849414b38f903954a2043ebc79f1d25119246196eb0f40bcaac2",
+  "environment": "3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]",
+  "dependency_mode": "local existing dependencies; project packages installed from fresh wheels into isolated targets",
+  "project": {
+    "tests": 38,
+    "wheel": "installscope-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "173c2c2de33b7f80803e1fa2f7ff73b5cbba5be008bc53aa6330ebbbddccc5c7",
+    "source_hashes": {
+      "src/installscope/__init__.py": "aae4b64b027dc7033921a7d83511b98f0c5a5cde10c06b75ddd25157b45a5140",
+      "src/installscope/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "src/installscope/analysis.py": "ed956fad34c82abdcdb74405dbc1277c70f63f37aa151af8fb53fe16ec2ed00c",
+      "src/installscope/archive.py": "0144d2db18a750ebc46e1eddf49f20d60cdd22d917b89aabcfd2ffb35de0e276",
+      "src/installscope/cli.py": "de0974bbb05dca14f994ff33da308b5ef1cf848f5061700efc7640b0f685f24f",
+      "src/installscope/examples.py": "e4d602f36eb7547db849c873bf5fb67ec02bdd79084a5c2e9997e4bec633565d",
+      "src/installscope/report.py": "7c57599f24851eeeed7dc17271a8dc034a6d3ae3421e5c8323078547f942d99a",
+      "src/installscope/scheme.py": "12625626e2b0962fde195281f4abd7272dfe0b4150ad2c7241c9af9afa8d86aa",
+      "src/installscope/zipstream.py": "5f92b8ead347891431b0de02c46e3c62bbe5ed58ff71dce6ad02757f84d8689d",
+      "tests/test_analysis.py": "8916e5a3239cec76105c0ac438286eff867e66ea74bc34e62f034a9c5e54315d",
+      "tests/test_cli.py": "f4d20c6bbc09e9ba044fc867588f270083edcdf5ee43a1e19c5a17ca5831d6c7",
+      "tests/test_installer.py": "8f9a9bbae7b70b2c8b0a0fdf3a61bc6ef6d58469b6f6d1af74ad8dcff48deb28",
+      "tests/test_zip_boundaries.py": "233c9eded6a44809c2f2886d581c66eaa5e0658ecfc82d60a5839eacaa585fdc",
+      "tests/test_zipstream.py": "ece236bb0a633df3e0ebc0526680d330dae8d9838c593dc062c960bc08dee25d",
+      "scripts/check_distribution.py": "21d98e0e1b676858e8db8a0ad485df3420df1b45746cb594089b4dc9da629495",
+      ".github/workflows/ci.yml": "91a5d8423c6197f2fbca49b8cd6c1a497fb875e4c723d53636a493488e30109f",
+      "pyproject.toml": "727a4b7bce7a446772bfbce109d84f0225a3bc7322c96144cb5723b44962681c"
+    },
+    "installed_tests": "PASS",
+    "wheel_source_bytes": "MATCH"
+  },
+  "mutation": {
+    "project": "installscope",
+    "assertion": "test_root_and_data_remap_collide",
+    "result": "CAUGHT",
+    "source_unchanged": true
+  },
+  "visual": {
+    "project": "installscope",
+    "file": "installscope-demo/collision.html",
+    "method": "Chrome DevTools MCP, explicitly selected isolated page 22, final installed-package report",
+    "desktop_width": 1200,
+    "desktop_document_width": 1185,
+    "mobile_width": 360,
+    "mobile_document_width": 360,
+    "document_visible_during_checks": true,
+    "details_before": false,
+    "details_after": true,
+    "mapped_rows": 8,
+    "visible_evidence": "file_collision with both owners",
+    "external_resource_entries": 0,
+    "limits": "Basic report rendering and interaction checks; not a real-phone, screen-reader, cross-browser or general network-security certification. Renderer was unchanged from the earlier inline full-page visual review."
+  },
+  "review": {
+    "initial_independent_review": "performed; findings reproduced and fixed",
+    "independent_fix_rereview": "not_started: agent service daily quota exceeded",
+    "fix_verification": "owner-run tests and raw-decoder controls; not independent approval"
+  }
+}
