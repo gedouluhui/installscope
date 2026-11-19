@@ -1,5 +1,7 @@
 # InstallScope
 
+[![CI](https://github.com/gedouluhui/installscope/actions/workflows/ci.yml/badge.svg)](https://github.com/gedouluhui/installscope/actions/workflows/ci.yml)
+
 **Different wheel paths can install to the same file. See the owners before installing.**
 
 InstallScope reads local Python wheels, validates their declared payloads and maps them into a **declared virtual installation scheme**. It explains cross-package file ownership conflicts without installing, importing or executing the supplied packages.
