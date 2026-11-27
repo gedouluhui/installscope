@@ -88,3 +88,34 @@ Tests cover actual ZIP corruption, remapping collisions, platform policy, legal 
 [Wheel specification](https://packaging.python.org/en/latest/specifications/binary-distribution-format/), [check-wheel-contents](https://pypi.org/project/check-wheel-contents/), wheel-inspect and pip-audit solve important adjacent problems. InstallScope focuses on declared **multi-wheel destination ownership**, not replacing these tools or claiming a new scanning algorithm.
 
 Small reproducible bug reports and additional installer-policy fixtures are welcome. Do not upload private wheels or sensitive reports. AI-assisted implementation; MIT. No PyPI publication, broad security certification or real-user adoption is claimed.
+
+## Quickstart and support
+
+### Problem
+Map local wheel payloads into a declared installation scheme and expose cross-package destination conflicts before installing anything.
+
+### Install
+```sh
+python -m pip install .
+```
+
+### Success
+```sh
+installscope demo --output demo
+```
+Expected: The self-generated clear and collision controls are both classified correctly; exit 0.
+
+### Deliberate failure
+```sh
+installscope audit demo/demo_a-1.0-py3-none-any.whl demo/demo_b-1.0-py3-none-any.whl --platform posix
+```
+Expected: The two payloads claim the same destination and the command exits 1.
+
+### Evidence and coverage boundaries
+Evidence includes actual ZIP corruption, remapping collisions, platform policy, legal namespaces, equal-byte ownership, file/directory prefixes, no-execution controls, and an independent pip oracle using only self-generated harmless wheels. CLEAR covers the declared payload write set, not overall environment safety.
+
+### Support status
+Version 0.1.0 supports Python 3.10+ with the standard library only. No PyPI publication or broad security certification is claimed. Maintenance is best-effort with no SLA.
+
+### Limitations
+Installed environments, generated wrappers, rewritten scripts, .pyc files, dependency resolution, ABI compatibility, arbitrary installer side effects, and vulnerabilities are not checked. CRC/RECORD and SHA-256 do not prove origin or absence of malware.
