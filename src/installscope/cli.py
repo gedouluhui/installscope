@@ -49,6 +49,8 @@ def main(argv=None):
             if len(raw) > 2097152:
                 raise ValueError('scheme JSON size limit exceeded')
             scheme = json.loads(raw, object_pairs_hook=unique_object)
+            if not isinstance(scheme, dict):
+                raise ValueError('an explicitly supplied scheme must be a JSON object; omit --scheme for defaults')
         report = audit_wheels(args.wheels, platform=args.platform, scheme=scheme,
                               max_archive_bytes=args.max_archive_bytes, max_uncompressed_bytes=args.max_uncompressed_bytes,
                               max_members=args.max_members, max_metadata_bytes=args.max_metadata_bytes)
