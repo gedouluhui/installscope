@@ -88,14 +88,16 @@ def iter_member(raw, info, boundary, budget):
     if info.flag_bits & 8:
         position = start + info.compress_size
         raw.seek(position)
-        first = raw.read(4)
-        if first == DESCRIPTOR:
-            descriptor = raw.read(12)
-            end = position + 16
-        else:
-            descriptor = first + raw.read(8)
-            end = position + 12
-        if len(descriptor) != 12 or end > boundary:
+        available = boundary - position
+        if available < 12:
             raise ValueError('truncated/overlapping data descriptor')
-        if struct.unpack('<3L', descriptor) != (info.CRC, info.compress_size, info.file_size):
-            raise ValueError('data descriptor disagrees with validated member')
+        data = raw.read(min(16, available))
+        expected = (info.CRC, info.compress_size, info.file_size)
+        candidates = []
+        if len(data) >= 12 and struct.unpack('<3L', data[:12]) == expected:
+            candidates.append(12)
+        if len(data) >= 16 and data[:4] == DESCRIPTOR and struct.unpack('<3L', data[4:16]) == expected:
+            candidates.append(16)
+        if len(candidates) != 1:
+            raise ValueError('data descriptor disagrees with validated member or is ambiguous')
+        raw.seek(position + candidates[0])
